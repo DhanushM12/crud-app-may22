@@ -1,27 +1,12 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 mongoose.set('strictQuery', false)
+mongoose.connect("mongodb://0.0.0.0:27017/crudapp_apr");
 
-mongoose.connect('mongodb://127.0.0.1:27017/subscribermay', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-}, () => {
-    console.log("Connected to MongoDB")
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection problem"));
+db.on("open", function () {
+   console.log("connected to db successfully");
 });
 
-
-// mongoose.createConnection('mongodb://127.0.0.1:27017/subscribermay').asPromise();
-// mongoose.connect('mongodb://127.0.0.1:27017/subscribermay')
-
-// const db = mongoose.connection
-
-// db.on('error', function(){
-//     console.log(`Error in connection to MongoDB`)
-// })
-
-// db.once('open', function(){
-//     console.log("Successfully connected to MongoDB")
-// })
-
-// module.exports = db;
+module.exports = db;

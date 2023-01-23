@@ -1,0 +1,15 @@
+POST http://localhost:8000/subscriber/create
+Content-Type: application/json
+
+{
+    "channel": "CN",
+    "name": "dummy1"
+}
+
+###
+
+GET http://localhost:8000/subscriber/list
+
+
+###
+GET http://localhost:8000/subscriber/63ce868c19a843ae777f13ac
