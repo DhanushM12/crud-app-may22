@@ -2,8 +2,8 @@ POST http://localhost:8000/subscriber/create
 Content-Type: application/json
 
 {
-    "channel": "CN",
-    "name": "dummy1"
+    "channel": "***",
+    "name": "***"
 }
 
 ###
@@ -12,4 +12,17 @@ GET http://localhost:8000/subscriber/list
 
 
 ###
-GET http://localhost:8000/subscriber/63ce868c19a843ae777f13ac
+GET http://localhost:8000/subscriber/63ce86c019a843ae777f13ae
+
+###
+PATCH http://localhost:8000/subscriber/63ce868c19a843ae777f13ac
+Content-Type: application/json
+
+{
+    "name": "***"
+}
+
+
+###
+
+DELETE http://localhost:8000/subscriber/63ce86c019a843ae777f13ae

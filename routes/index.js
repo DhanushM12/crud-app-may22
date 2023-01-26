@@ -32,6 +32,30 @@ router.get('/:id', getSubscriber, (req, res) => {
     res.json(res.subscriber)
 })
 
+router.patch('/:id', getSubscriber, async (req, res) => {
+    if(req.body.name != null){
+        res.subscriber.name = req.body.name;
+    }
+    if(req.body.channel != null){
+        res.subscriber.channel = req.body.channel;
+    }
+    try {
+        const updated = await res.subscriber.save();
+        res.status(200).json({message: updated})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.delete('/:id', getSubscriber, async (req, res) => {
+    try {
+        await res.subscriber.remove();
+        res.json({message: 'Deleted Subscriber'})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
 async function getSubscriber(req, res, next){
     let subscriber;
     try {
